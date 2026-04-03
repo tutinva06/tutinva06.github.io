@@ -2,10 +2,10 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=yes">
     <title>Алексей Иванов | Креативный фронтенд-разработчик</title>
     <!-- Подключение шрифта Inter из Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
     <!-- Font Awesome 6 (бесплатные иконки) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
@@ -21,11 +21,12 @@
             color: #1e1b2e;
             line-height: 1.5;
             scroll-behavior: smooth;
+            overflow-x: hidden;
         }
 
         /* кастомный скролл */
         ::-webkit-scrollbar {
-            width: 8px;
+            width: 5px;
         }
         ::-webkit-scrollbar-track {
             background: #e9e6f2;
@@ -35,16 +36,16 @@
             border-radius: 12px;
         }
 
-        /* контейнер */
+        /* контейнер с отступами */
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 24px;
         }
 
-        /* хедер + навигация */
+        /* хедер + навигация (адаптивная) */
         header {
-            background-color: rgba(255, 255, 255, 0.92);
+            background-color: rgba(255, 255, 255, 0.96);
             backdrop-filter: blur(12px);
             position: sticky;
             top: 0;
@@ -57,14 +58,14 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 0;
+            padding: 18px 0;
             flex-wrap: wrap;
             gap: 16px;
         }
 
         .logo {
-            font-size: 1.8rem;
-            font-weight: 700;
+            font-size: 1.7rem;
+            font-weight: 800;
             background: linear-gradient(135deg, #5f3dc9, #b47cff);
             background-clip: text;
             -webkit-background-clip: text;
@@ -74,15 +75,16 @@
 
         .nav-links {
             display: flex;
-            gap: 32px;
+            gap: 28px;
             list-style: none;
         }
 
         .nav-links a {
             text-decoration: none;
-            font-weight: 500;
+            font-weight: 600;
             color: #2d2a40;
             transition: color 0.2s ease;
+            font-size: 1rem;
         }
 
         .nav-links a:hover {
@@ -100,6 +102,7 @@
             border: none;
             cursor: pointer;
             font-size: 0.95rem;
+            text-align: center;
         }
 
         .btn-primary {
@@ -128,7 +131,7 @@
 
         /* секция hero */
         .hero {
-            padding: 80px 0 100px;
+            padding: 70px 0 90px;
             background: linear-gradient(145deg, #ffffff 0%, #f5f2ff 100%);
         }
 
@@ -149,14 +152,14 @@
             padding: 6px 16px;
             border-radius: 40px;
             font-size: 0.85rem;
-            font-weight: 600;
+            font-weight: 700;
             color: #5f3dc9;
             margin-bottom: 24px;
         }
 
         .hero-content h1 {
-            font-size: 3.5rem;
-            font-weight: 700;
+            font-size: 3.4rem;
+            font-weight: 800;
             line-height: 1.2;
             letter-spacing: -0.02em;
             margin-bottom: 20px;
@@ -177,11 +180,12 @@
             display: flex;
             gap: 32px;
             margin-top: 24px;
+            flex-wrap: wrap;
         }
 
         .stat-item h3 {
             font-size: 1.8rem;
-            font-weight: 700;
+            font-weight: 800;
             color: #2d2a40;
         }
 
@@ -202,12 +206,12 @@
 
         /* секция услуг / чем занимаюсь */
         .section {
-            padding: 90px 0;
+            padding: 80px 0;
         }
 
         .section-title {
-            font-size: 2.3rem;
-            font-weight: 700;
+            font-size: 2.2rem;
+            font-weight: 800;
             text-align: center;
             margin-bottom: 16px;
             letter-spacing: -0.01em;
@@ -224,34 +228,34 @@
         .cards-grid {
             display: flex;
             flex-wrap: wrap;
-            gap: 32px;
+            gap: 30px;
             justify-content: center;
         }
 
         .service-card {
             background: white;
             border-radius: 36px;
-            padding: 36px 28px;
-            flex: 1 1 280px;
+            padding: 32px 24px;
+            flex: 1 1 260px;
             transition: all 0.3s ease;
             border: 1px solid #f0edf7;
             box-shadow: 0 12px 24px -12px rgba(0, 0, 0, 0.05);
         }
 
         .service-card:hover {
-            transform: translateY(-10px);
+            transform: translateY(-8px);
             border-color: #cdc2f0;
             box-shadow: 0 24px 36px -12px rgba(95, 61, 201, 0.15);
         }
 
         .service-icon {
-            font-size: 2.5rem;
+            font-size: 2.4rem;
             color: #7c3aed;
-            margin-bottom: 24px;
+            margin-bottom: 20px;
         }
 
         .service-card h3 {
-            font-size: 1.5rem;
+            font-size: 1.45rem;
             margin-bottom: 12px;
         }
 
@@ -280,7 +284,7 @@
 
         .portfolio-img {
             background: linear-gradient(135deg, #c7b9ff, #b39df0);
-            height: 220px;
+            height: 200px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -294,12 +298,13 @@
 
         .portfolio-info h3 {
             margin-bottom: 8px;
+            font-size: 1.3rem;
         }
 
         .portfolio-tag {
             color: #7c3aed;
-            font-size: 0.8rem;
-            font-weight: 600;
+            font-size: 0.75rem;
+            font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
@@ -307,33 +312,34 @@
         /* отзывы */
         .testimonials {
             background: #f6f3fe;
-            border-radius: 64px;
+            border-radius: 48px;
             margin: 40px 0;
         }
         .testimonial-grid {
             display: flex;
             flex-wrap: wrap;
-            gap: 32px;
+            gap: 28px;
             justify-content: center;
-            padding: 20px 0 40px;
+            padding: 20px 0 50px;
         }
         .testimonial-card {
             background: white;
             border-radius: 32px;
-            padding: 32px;
-            flex: 1 1 280px;
+            padding: 28px;
+            flex: 1 1 270px;
             box-shadow: 0 12px 24px rgba(0,0,0,0.02);
             transition: 0.2s;
         }
         .testimonial-card i {
             color: #d6c6ff;
-            font-size: 2rem;
+            font-size: 1.8rem;
             margin-bottom: 16px;
         }
         .testimonial-card p {
             font-style: italic;
             margin: 16px 0;
             color: #2b263b;
+            font-size: 0.95rem;
         }
         .client-name {
             font-weight: 700;
@@ -345,7 +351,7 @@
         .contact-area {
             background: linear-gradient(115deg, #1e1b2e 0%, #2a2442 100%);
             border-radius: 48px;
-            padding: 56px 48px;
+            padding: 50px 40px;
             color: white;
             margin: 40px 0 60px;
         }
@@ -359,16 +365,19 @@
         .contact-text h2 {
             font-size: 2rem;
             margin-bottom: 16px;
+            font-weight: 700;
         }
         .contact-text p {
-            opacity: 0.8;
+            opacity: 0.85;
             max-width: 400px;
+            font-size: 0.95rem;
         }
         .contact-form {
             display: flex;
             flex-wrap: wrap;
             gap: 16px;
-            min-width: 280px;
+            min-width: 260px;
+            flex: 1;
         }
         .contact-form input {
             flex: 1;
@@ -380,6 +389,7 @@
             color: white;
             font-size: 1rem;
             outline: none;
+            min-width: 180px;
         }
         .contact-form input::placeholder {
             color: #cdc4f0;
@@ -393,6 +403,8 @@
             border-radius: 60px;
             cursor: pointer;
             transition: 0.2s;
+            font-size: 0.9rem;
+            white-space: nowrap;
         }
         .contact-form button:hover {
             background: #e9e0ff;
@@ -411,6 +423,7 @@
             gap: 24px;
             justify-content: center;
             margin-bottom: 20px;
+            flex-wrap: wrap;
         }
         .social-icons a {
             color: #5f3dc9;
@@ -422,32 +435,181 @@
             transform: translateY(-3px);
         }
 
-        /* адаптив */
+        /* ========== МОБИЛЬНАЯ АДАПТАЦИЯ (телефоны) ========== */
         @media (max-width: 768px) {
+            .container {
+                padding: 0 20px;
+            }
             .navbar {
                 flex-direction: column;
+                gap: 12px;
+                padding: 16px 0;
+            }
+            .nav-links {
+                gap: 24px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .nav-links a {
+                font-size: 0.9rem;
+            }
+            .hero {
+                padding: 50px 0 70px;
             }
             .hero-content h1 {
-                font-size: 2.4rem;
+                font-size: 2.2rem;
             }
             .hero-content p {
                 max-width: 100%;
+                font-size: 1rem;
             }
             .hero-grid {
                 flex-direction: column-reverse;
+                gap: 32px;
             }
             .hero-stats {
                 justify-content: space-between;
+                gap: 20px;
+            }
+            .stat-item h3 {
+                font-size: 1.5rem;
+            }
+            .stat-item p {
+                font-size: 0.8rem;
+            }
+            .hero-image {
+                padding: 16px;
+                border-radius: 36px;
             }
             .section-title {
-                font-size: 1.9rem;
+                font-size: 1.8rem;
+            }
+            .section-sub {
+                font-size: 0.95rem;
+                padding: 0 12px;
+            }
+            .service-card {
+                padding: 28px 20px;
+                text-align: center;
+            }
+            .service-card h3 {
+                font-size: 1.3rem;
+            }
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+            .portfolio-img {
+                height: 180px;
+                font-size: 2.5rem;
+            }
+            .testimonials {
+                border-radius: 36px;
+            }
+            .testimonial-card {
+                padding: 24px;
             }
             .contact-area {
-                padding: 40px 28px;
+                padding: 36px 28px;
+                border-radius: 36px;
             }
             .contact-flex {
                 flex-direction: column;
                 text-align: center;
+                gap: 28px;
+            }
+            .contact-text p {
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .contact-form {
+                width: 100%;
+                justify-content: center;
+            }
+            .contact-form input {
+                width: 100%;
+                min-width: auto;
+            }
+            .contact-form button {
+                width: 100%;
+                padding: 14px 0;
+                white-space: normal;
+            }
+            footer {
+                padding: 30px 0 20px;
+            }
+            .social-icons {
+                gap: 28px;
+            }
+            .btn {
+                padding: 10px 20px;
+                font-size: 0.85rem;
+            }
+        }
+
+        /* для совсем маленьких экранов (до 480px) */
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 16px;
+            }
+            .logo {
+                font-size: 1.5rem;
+            }
+            .hero-content h1 {
+                font-size: 1.9rem;
+            }
+            .hero-badge {
+                font-size: 0.75rem;
+            }
+            .hero-stats {
+                gap: 16px;
+            }
+            .stat-item h3 {
+                font-size: 1.3rem;
+            }
+            .section-title {
+                font-size: 1.6rem;
+            }
+            .cards-grid {
+                gap: 20px;
+            }
+            .service-card {
+                flex: 1 1 100%;
+            }
+            .portfolio-info h3 {
+                font-size: 1.2rem;
+            }
+            .contact-area {
+                padding: 28px 20px;
+            }
+            .contact-text h2 {
+                font-size: 1.6rem;
+            }
+            .testimonial-card p {
+                font-size: 0.9rem;
+            }
+            .btn-primary, .btn-outline {
+                width: 100%;
+                text-align: center;
+            }
+            .hero-content div[style*="display: flex"] {
+                flex-direction: column;
+                width: 100%;
+            }
+        }
+
+        /* Улучшение таргетов на мобильных (кнопки и ссылки) */
+        @media (hover: none) and (pointer: coarse) {
+            .btn, .nav-links a, .social-icons a {
+                cursor: default;
+                -webkit-tap-highlight-color: transparent;
+            }
+            .service-card:hover, .portfolio-item:hover {
+                transform: none;
+            }
+            .btn-primary:active {
+                transform: scale(0.97);
+                background: #4c2daf;
             }
         }
     </style>
@@ -491,17 +653,16 @@
                     </div>
                 </div>
                 <div class="hero-image">
-                    <!-- абстрактная иллюстрация вместо реальной картинки -->
-                    <div style="background: #b49eff; border-radius: 32px; padding: 32px 20px; text-align: center; color: white;">
-                        <i class="fas fa-laptop-code" style="font-size: 5rem;"></i>
-                        <p style="margin-top: 20px; font-weight: 500;">✨ modern & creative ✨</p>
+                    <div style="background: #b49eff; border-radius: 32px; padding: 28px 16px; text-align: center; color: white;">
+                        <i class="fas fa-laptop-code" style="font-size: 4rem;"></i>
+                        <p style="margin-top: 16px; font-weight: 500; font-size: 0.9rem;">✨ modern & creative ✨</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Услуги (чем я могу быть полезен) -->
+    <!-- Услуги -->
     <section id="services" class="section">
         <div class="container">
             <h2 class="section-title">Что я создаю</h2>
@@ -531,7 +692,7 @@
         </div>
     </section>
 
-    <!-- Портфолио секция -->
+    <!-- Портфолио -->
     <section id="portfolio" class="section" style="padding-top: 0;">
         <div class="container">
             <h2 class="section-title">Избранные проекты</h2>
@@ -565,10 +726,10 @@
         </div>
     </section>
 
-    <!-- Блок отзывов -->
+    <!-- Отзывы -->
     <div class="container">
         <div class="testimonials">
-            <div style="padding: 40px 32px 20px 32px; text-align: center;">
+            <div style="padding: 40px 24px 20px 24px; text-align: center;">
                 <h2 class="section-title" style="margin-bottom: 8px;">Отзывы клиентов</h2>
                 <p class="section-sub">Работать со мной — комфортно и результативно</p>
             </div>
@@ -592,7 +753,7 @@
         </div>
     </div>
 
-    <!-- Контактная секция + форма -->
+    <!-- Контактная секция -->
     <div class="container" id="contact">
         <div class="contact-area">
             <div class="contact-flex">
@@ -624,7 +785,6 @@
     </div>
 </footer>
 
-<!-- небольшой скрипт для интерактива (уведомление о форме) -->
 <script>
     (function() {
         // Плавный скролл для навигации
@@ -646,7 +806,7 @@
             });
         });
 
-        // Кнопка отправки контакта (демонстрация, без реальной отправки)
+        // Кнопка отправки контакта (демонстрация)
         const submitBtn = document.getElementById('submitContactBtn');
         if (submitBtn) {
             submitBtn.addEventListener('click', function(e) {
@@ -664,7 +824,7 @@
             });
         }
 
-        // маленькая анимация появления карточек при скролле (простая, для красоты)
+        // Анимация появления элементов при скролле (мобильная оптимизация)
         const fadeElements = document.querySelectorAll('.service-card, .portfolio-item, .testimonial-card');
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
