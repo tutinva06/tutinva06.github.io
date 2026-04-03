@@ -2,109 +2,685 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Вход в систему</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Алексей Иванов | Креативный фронтенд-разработчик</title>
+    <!-- Подключение шрифта Inter из Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <!-- Font Awesome 6 (бесплатные иконки) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        /* Основные стили */
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f0f2f5;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
+        * {
             margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
-        /* Контейнер формы */
-        .login-container {
-            background-color: #fff;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            width: 100%;
-            max-width: 350px;
-            text-align: center;
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #faf9fc;
+            color: #1e1b2e;
+            line-height: 1.5;
+            scroll-behavior: smooth;
         }
 
-        .login-container h2 {
-            margin-bottom: 25px;
-            color: #333;
+        /* кастомный скролл */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #e9e6f2;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #8b7ac7;
+            border-radius: 12px;
         }
 
-        /* Поля ввода */
-        .input-group {
-            margin-bottom: 15px;
-            text-align: left;
+        /* контейнер */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
         }
 
-        .input-group label {
-            display: block;
-            margin-bottom: 5px;
-            color: #666;
-            font-size: 14px;
+        /* хедер + навигация */
+        header {
+            background-color: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(12px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+            border-bottom: 1px solid rgba(139, 122, 199, 0.15);
         }
 
-        .input-group input {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            box-sizing: border-box; /* Чтобы padding не увеличивал ширину */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            flex-wrap: wrap;
+            gap: 16px;
         }
 
-        /* Кнопка */
-        .login-button {
-            width: 100%;
-            padding: 10px;
-            border: none;
-            border-radius: 5px;
-            background-color: #007bff;
-            color: white;
-            font-size: 16px;
-            cursor: pointer;
-            transition: background-color 0.3s;
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #5f3dc9, #b47cff);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            letter-spacing: -0.02em;
         }
 
-        .login-button:hover {
-            background-color: #0056b3;
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
         }
 
-        /* Ссылка "Забыли пароль" */
-        .forgot-password {
-            margin-top: 15px;
-            font-size: 12px;
-            color: #007bff;
+        .nav-links a {
             text-decoration: none;
+            font-weight: 500;
+            color: #2d2a40;
+            transition: color 0.2s ease;
+        }
+
+        .nav-links a:hover {
+            color: #7c3aed;
+        }
+
+        /* кнопки */
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            border-radius: 40px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.25s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 0.95rem;
+        }
+
+        .btn-primary {
+            background: #5f3dc9;
+            color: white;
+            box-shadow: 0 8px 18px rgba(95, 61, 201, 0.2);
+        }
+
+        .btn-primary:hover {
+            background: #4c2daf;
+            transform: translateY(-2px);
+            box-shadow: 0 12px 22px rgba(95, 61, 201, 0.3);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1.5px solid #d6cef0;
+            color: #2d2a40;
+        }
+
+        .btn-outline:hover {
+            border-color: #7c3aed;
+            background: rgba(124, 58, 237, 0.05);
+            transform: translateY(-2px);
+        }
+
+        /* секция hero */
+        .hero {
+            padding: 80px 0 100px;
+            background: linear-gradient(145deg, #ffffff 0%, #f5f2ff 100%);
+        }
+
+        .hero-grid {
+            display: flex;
+            align-items: center;
+            gap: 48px;
+            flex-wrap: wrap;
+        }
+
+        .hero-content {
+            flex: 1;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: #ede9fe;
+            padding: 6px 16px;
+            border-radius: 40px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #5f3dc9;
+            margin-bottom: 24px;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+            margin-bottom: 20px;
+            background: linear-gradient(to right, #1e1b2e, #5b3bc4);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            color: #4a4663;
+            margin-bottom: 32px;
+            max-width: 90%;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 32px;
+            margin-top: 24px;
+        }
+
+        .stat-item h3 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #2d2a40;
+        }
+
+        .hero-image {
+            flex: 0.9;
+            background: radial-gradient(circle at 30% 20%, #e9defa, #d9cef0);
+            border-radius: 48px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 30px 40px -20px rgba(0,0,0,0.1);
+        }
+
+        .hero-image img {
+            max-width: 100%;
+            border-radius: 32px;
+            filter: drop-shadow(0 10px 14px rgba(0,0,0,0.05));
+        }
+
+        /* секция услуг / чем занимаюсь */
+        .section {
+            padding: 90px 0;
+        }
+
+        .section-title {
+            font-size: 2.3rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 16px;
+            letter-spacing: -0.01em;
+        }
+
+        .section-sub {
+            text-align: center;
+            color: #6b6a7c;
+            max-width: 600px;
+            margin: 0 auto 48px auto;
+            font-size: 1.1rem;
+        }
+
+        .cards-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 32px;
+            justify-content: center;
+        }
+
+        .service-card {
+            background: white;
+            border-radius: 36px;
+            padding: 36px 28px;
+            flex: 1 1 280px;
+            transition: all 0.3s ease;
+            border: 1px solid #f0edf7;
+            box-shadow: 0 12px 24px -12px rgba(0, 0, 0, 0.05);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            border-color: #cdc2f0;
+            box-shadow: 0 24px 36px -12px rgba(95, 61, 201, 0.15);
+        }
+
+        .service-icon {
+            font-size: 2.5rem;
+            color: #7c3aed;
+            margin-bottom: 24px;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 12px;
+        }
+
+        /* портфолио (сетка работ) */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 32px;
+            margin-top: 20px;
+        }
+
+        .portfolio-item {
+            background: white;
+            border-radius: 28px;
+            overflow: hidden;
+            transition: all 0.3s;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.03);
+            border: 1px solid #f0edf7;
+        }
+
+        .portfolio-item:hover {
+            transform: scale(1.02);
+            border-color: #cbbff5;
+            box-shadow: 0 20px 30px -12px rgba(0, 0, 0, 0.1);
+        }
+
+        .portfolio-img {
+            background: linear-gradient(135deg, #c7b9ff, #b39df0);
+            height: 220px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+        }
+
+        .portfolio-info {
+            padding: 24px;
+        }
+
+        .portfolio-info h3 {
+            margin-bottom: 8px;
+        }
+
+        .portfolio-tag {
+            color: #7c3aed;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* отзывы */
+        .testimonials {
+            background: #f6f3fe;
+            border-radius: 64px;
+            margin: 40px 0;
+        }
+        .testimonial-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 32px;
+            justify-content: center;
+            padding: 20px 0 40px;
+        }
+        .testimonial-card {
+            background: white;
+            border-radius: 32px;
+            padding: 32px;
+            flex: 1 1 280px;
+            box-shadow: 0 12px 24px rgba(0,0,0,0.02);
+            transition: 0.2s;
+        }
+        .testimonial-card i {
+            color: #d6c6ff;
+            font-size: 2rem;
+            margin-bottom: 16px;
+        }
+        .testimonial-card p {
+            font-style: italic;
+            margin: 16px 0;
+            color: #2b263b;
+        }
+        .client-name {
+            font-weight: 700;
+            margin-top: 12px;
+            color: #5f3dc9;
+        }
+
+        /* контактная секция */
+        .contact-area {
+            background: linear-gradient(115deg, #1e1b2e 0%, #2a2442 100%);
+            border-radius: 48px;
+            padding: 56px 48px;
+            color: white;
+            margin: 40px 0 60px;
+        }
+        .contact-flex {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 32px;
+        }
+        .contact-text h2 {
+            font-size: 2rem;
+            margin-bottom: 16px;
+        }
+        .contact-text p {
+            opacity: 0.8;
+            max-width: 400px;
+        }
+        .contact-form {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            min-width: 280px;
+        }
+        .contact-form input {
+            flex: 1;
+            padding: 14px 20px;
+            border-radius: 60px;
+            border: none;
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(4px);
+            color: white;
+            font-size: 1rem;
+            outline: none;
+        }
+        .contact-form input::placeholder {
+            color: #cdc4f0;
+        }
+        .contact-form button {
+            background: white;
+            color: #2a2442;
+            border: none;
+            font-weight: 700;
+            padding: 0 28px;
+            border-radius: 60px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .contact-form button:hover {
+            background: #e9e0ff;
+            transform: scale(0.97);
+        }
+
+        /* футер */
+        footer {
+            padding: 40px 0 30px;
+            border-top: 1px solid #e9e2fc;
+            text-align: center;
+            color: #6b6882;
+        }
+        .social-icons {
+            display: flex;
+            gap: 24px;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        .social-icons a {
+            color: #5f3dc9;
+            font-size: 1.4rem;
+            transition: 0.2s;
+        }
+        .social-icons a:hover {
+            color: #2d1b77;
+            transform: translateY(-3px);
+        }
+
+        /* адаптив */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+            }
+            .hero-content h1 {
+                font-size: 2.4rem;
+            }
+            .hero-content p {
+                max-width: 100%;
+            }
+            .hero-grid {
+                flex-direction: column-reverse;
+            }
+            .hero-stats {
+                justify-content: space-between;
+            }
+            .section-title {
+                font-size: 1.9rem;
+            }
+            .contact-area {
+                padding: 40px 28px;
+            }
+            .contact-flex {
+                flex-direction: column;
+                text-align: center;
+            }
         }
     </style>
 </head>
 <body>
 
-<div class="login-container">
-    <h2>Вход</h2>
-    <form id="loginForm">
-        <div class="input-group">
-            <label for="username">Логин</label>
-            <input type="text" id="username" name="username" required>
+<header>
+    <div class="container">
+        <div class="navbar">
+            <div class="logo">Alex<span style="color:#7c3aed;">Dev</span></div>
+            <ul class="nav-links">
+                <li><a href="#home">Главная</a></li>
+                <li><a href="#services">Услуги</a></li>
+                <li><a href="#portfolio">Портфолио</a></li>
+                <li><a href="#contact">Контакты</a></li>
+            </ul>
+            <div>
+                <a href="#contact" class="btn btn-outline" style="padding: 8px 22px;">Связаться</a>
+            </div>
         </div>
-        <div class="input-group">
-            <label for="password">Пароль</label>
-            <input type="password" id="password" name="password" required>
-        </div>
-        <button type="submit" class="login-button">Войти</button>
-    </form>
-    <a href="#" class="forgot-password">Забыли пароль?</a>
-</div>
+    </div>
+</header>
 
+<main>
+    <!-- Hero секция / Главная -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-grid">
+                <div class="hero-content">
+                    <span class="hero-badge"><i class="fas fa-code"></i>  Frontend-инженер</span>
+                    <h1>Создаю цифровые <br> продукты с душой</h1>
+                    <p>Разработка современных веб-сайтов и интерактивных интерфейсов, которые привлекают, вдохновляют и конвертируют.</p>
+                    <div style="display: flex; gap: 18px; flex-wrap: wrap;">
+                        <a href="#portfolio" class="btn btn-primary">Мои работы</a>
+                        <a href="#contact" class="btn btn-outline">Начать проект</a>
+                    </div>
+                    <div class="hero-stats">
+                        <div class="stat-item"><h3>4+</h3><p>лет опыта</p></div>
+                        <div class="stat-item"><h3>45+</h3><p>проектов</p></div>
+                        <div class="stat-item"><h3>24/7</h3><p>поддержка</p></div>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <!-- абстрактная иллюстрация вместо реальной картинки -->
+                    <div style="background: #b49eff; border-radius: 32px; padding: 32px 20px; text-align: center; color: white;">
+                        <i class="fas fa-laptop-code" style="font-size: 5rem;"></i>
+                        <p style="margin-top: 20px; font-weight: 500;">✨ modern & creative ✨</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Услуги (чем я могу быть полезен) -->
+    <section id="services" class="section">
+        <div class="container">
+            <h2 class="section-title">Что я создаю</h2>
+            <div class="section-sub">Современные решения для вашего бизнеса — от лендингов до сложных SPA</div>
+            <div class="cards-grid">
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-globe"></i></div>
+                    <h3>Веб-сайты</h3>
+                    <p>Адаптивные, быстрые и доступные сайты с упором на UX/UI и современные технологии.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-mobile-alt"></i></div>
+                    <h3>Мобильная верстка</h3>
+                    <p>Pixel perfect дизайн, плавные анимации и идеальная работа на любом устройстве.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-cart-shopping"></i></div>
+                    <h3>Интернет-магазины</h3>
+                    <p>Создание удобных каталогов, корзин и админ-панелей под ключ.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-chart-line"></i></div>
+                    <h3>Веб-приложения</h3>
+                    <p>Интерактивные дашборды, CRM-системы и сложная клиентская логика.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Портфолио секция -->
+    <section id="portfolio" class="section" style="padding-top: 0;">
+        <div class="container">
+            <h2 class="section-title">Избранные проекты</h2>
+            <div class="section-sub">Реальные кейсы, которые говорят сами за себя</div>
+            <div class="portfolio-grid">
+                <div class="portfolio-item">
+                    <div class="portfolio-img"><i class="fas fa-chart-simple"></i> Fintech</div>
+                    <div class="portfolio-info">
+                        <span class="portfolio-tag">Веб-приложение</span>
+                        <h3>Аналитика InvestFlow</h3>
+                        <p>Интерактивная платформа для отслеживания инвестиций с графиками и виджетами.</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <div class="portfolio-img"><i class="fas fa-bag-shopping"></i> E‑commerce</div>
+                    <div class="portfolio-info">
+                        <span class="portfolio-tag">Магазин одежды</span>
+                        <h3>Mood Store</h3>
+                        <p>Адаптивный магазин с корзиной, фильтрами и удобной мобильной навигацией.</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <div class="portfolio-img"><i class="fas fa-coffee"></i> Лендинг</div>
+                    <div class="portfolio-info">
+                        <span class="portfolio-tag">Креативное агентство</span>
+                        <h3>Roast Coffee Lab</h3>
+                        <p>Яркий лендинг с анимацией параллакса и формой заказа кофе.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Блок отзывов -->
+    <div class="container">
+        <div class="testimonials">
+            <div style="padding: 40px 32px 20px 32px; text-align: center;">
+                <h2 class="section-title" style="margin-bottom: 8px;">Отзывы клиентов</h2>
+                <p class="section-sub">Работать со мной — комфортно и результативно</p>
+            </div>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <i class="fas fa-quote-left"></i>
+                    <p>Алексей создал для нас сайт, который превзошел ожидания. Очень внимательный подход и четкое соблюдение сроков. Рекомендую!</p>
+                    <div class="client-name">— Екатерина С., основатель студии</div>
+                </div>
+                <div class="testimonial-card">
+                    <i class="fas fa-quote-left"></i>
+                    <p>Профессионал высшего уровня. Сайт получился быстрым и красивым. Отдельное спасибо за адаптив и консультации после запуска.</p>
+                    <div class="client-name">— Дмитрий К., CEO TechStart</div>
+                </div>
+                <div class="testimonial-card">
+                    <i class="fas fa-quote-left"></i>
+                    <p>Работаем с Алексеем уже третий проект. Всегда предлагает нестандартные идеи, а код — чистый и понятный. 10/10.</p>
+                    <div class="client-name">— Анна В., маркетолог</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Контактная секция + форма -->
+    <div class="container" id="contact">
+        <div class="contact-area">
+            <div class="contact-flex">
+                <div class="contact-text">
+                    <h2>Давайте создадим <br> что-то великое</h2>
+                    <p><i class="fas fa-envelope"></i> alex@devstudio.com &nbsp;|&nbsp; <i class="fas fa-phone-alt"></i> +7 (999) 456-78-90</p>
+                    <p style="margin-top: 18px;">Напишите мне — обсудим ваш проект без обязательств.</p>
+                </div>
+                <div class="contact-form">
+                    <input type="text" placeholder="Ваше имя" id="nameInput">
+                    <input type="email" placeholder="Email или телефон" id="emailInput">
+                    <button id="submitContactBtn">Отправить →</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<footer>
+    <div class="container">
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-github"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#"><i class="fab fa-telegram"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+        <p>© 2025 Алексей Иванов — креативный фронтенд-разработчик. Все права защищены.</p>
+        <p style="margin-top: 10px; font-size: 0.8rem;">Сделано с <i class="fas fa-heart" style="color:#b47cff;"></i> для вдохновляющих идей</p>
+    </div>
+</footer>
+
+<!-- небольшой скрипт для интерактива (уведомление о форме) -->
 <script>
-    // Простой JavaScript для обработки отправки
-    document.getElementById('loginForm').addEventListener('submit', function(event) {
-        event.preventDefault(); // Предотвращаем перезагрузку страницы
-        alert('Попытка входа...');
-        // Здесь можно добавить AJAX-запрос для проверки данных
-    });
-</script>
+    (function() {
+        // Плавный скролл для навигации
+        const navLinks = document.querySelectorAll('.nav-links a, .btn-outline[href="#contact"], .btn-primary[href="#portfolio"]');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                if (href && href.startsWith('#')) {
+                    e.preventDefault();
+                    const targetId = href.substring(1);
+                    const targetElement = document.getElementById(targetId);
+                    if (targetElement) {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                }
+            });
+        });
 
+        // Кнопка отправки контакта (демонстрация, без реальной отправки)
+        const submitBtn = document.getElementById('submitContactBtn');
+        if (submitBtn) {
+            submitBtn.addEventListener('click', function(e) {
+                const nameInput = document.getElementById('nameInput');
+                const emailInput = document.getElementById('emailInput');
+                const nameVal = nameInput.value.trim();
+                const emailVal = emailInput.value.trim();
+                if (!nameVal || !emailVal) {
+                    alert('Пожалуйста, заполните имя и email/телефон 😊');
+                    return;
+                }
+                alert(`Спасибо, ${nameVal}! Я свяжусь с вами в ближайшее время. ✨`);
+                nameInput.value = '';
+                emailInput.value = '';
+            });
+        }
+
+        // маленькая анимация появления карточек при скролле (простая, для красоты)
+        const fadeElements = document.querySelectorAll('.service-card, .portfolio-item, .testimonial-card');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+        fadeElements.forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            observer.observe(el);
+        });
+    })();
+</script>
 </body>
 </html>
